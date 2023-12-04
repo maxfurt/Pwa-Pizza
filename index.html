@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" href="img/pwa-icon-256.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="./css/style.css">
+    <meta name="theme-color" content="white" />
+    <title>gps de pizza</title>
+  </head>
+  <body class="fullscreen">
+    <div class="container">
+        <h1 class="title">Cadastre sua pizzaria</h1>
+        <div style="text-align: center;">
+            <img src="/img/pwa-icon-256.jpg" alt="pwa" width="256" height="256">
+        </div>
+        <div id="entrada">
+            <h1>Cadastrar</h1>
+            <input type="text" id="titulo" placeholder="Nome da Pizzaria">
+            <input type="text" id="latitude" placeholder="latitude"/><br/>
+            <input type="text" id="longitude" placeholder="longitude"/><br/>
+            <input type="date" id="data">
+            <button id="btnCadastro">Cadastrar</button>
+            <button id="btnCarregar">Carregar Minhas Anotações</button>
+        </div>
+        <div id="resultados"></div>
+        <center><div id="mapa"></div></center>
+    </div>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/db.js"></script>
+</body>
+
+</html>
+
