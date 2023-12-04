@@ -42,7 +42,3 @@ if ('serviceWorker' in navigator) {
     }
     console.log('Ocorreu um erro: ' + errorMessage);
   };
-  
-  capturarLocalizacao.addEventListener('click', () => {
-    navigator.geolocation.getCurrentPosition(sucesso, erro);
-  });
