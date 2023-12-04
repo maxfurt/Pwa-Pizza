@@ -41,6 +41,8 @@ async function buscarTodasAnotacoes(){
             return `<div class="item">
                     <p>Pizzaria</p>
                     <p>Nome:${anotacao.titulo} </p>
+                    <p>Descrição:${anotacao.descricao}</p>
+                    <p>numero de pizzas no cardapio:${anotacao.pizza}</p>
                     <p>Latitude:${anotacao.latitude}</p>
                     <p>Longitude:${anotacao.longitude}</p>
                     <button class="btnDeletar" data-titulo="${anotacao.titulo}">Deletar</button>
@@ -56,7 +58,6 @@ async function buscarTodasAnotacoes(){
                         <style>.gmap_canvas{overflow:hidden;background:none!important;height:500px;width:600px;}</style>
                     </div>
                 </div>
-                <button class="btnMostrarMapa" data-latitude="${anotacao.latitude}" data-longitude="${anotacao.longitude}">Mostrar Mapa</button>
                </div>`;
         });
         listagem(divLista.join(' '));
@@ -90,13 +91,15 @@ function mostrarMapa(event) {
 
 async function adicionarAnotacao() {
     let titulo = document.getElementById("titulo").value;
+    let descricao = document.getElementById("descricao").value;
+    let pizza = document.getElementById("pizza").value;
     let latitude = document.getElementById("latitude").value;
     let longitude = document.getElementById("longitude").value;
     let data = document.getElementById("data").value;
     const tx = await db.transaction('anotacao', 'readwrite')
     const store = tx.objectStore('anotacao');
     try {
-        await store.add({ titulo: titulo, latitude: latitude, longitude: longitude, data: data });
+        await store.add({ titulo: titulo, descricao: descricao, pizza: pizza, latitude: latitude, longitude: longitude, data: data });
         await tx.done;
         limparCampos();
         console.log('Registro adicionado com sucesso!');
